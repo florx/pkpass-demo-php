@@ -6,11 +6,17 @@ use PKPass\PKPass;
 require('vendor/autoload.php');
 $pass = new PKPass('Certificates.p12', '123');
 
+$memberInfo = [
+    'id' => '103565',
+    'name' => 'Jake Hall',
+    'passLastUpdated' => '2023-12-30T23:10:00Z'
+];
+
 // Pass content
 $data = [
     "formatVersion" => 1,
     "passTypeIdentifier" => "pass.uk.org.newcastlescouts.explorers",
-    "serialNumber" => "103565",
+    "serialNumber" => $memberInfo['id'],
     "teamIdentifier" => "7HYGE94XQW",
     "organizationName" => "Newcastle Scouts",
     "description" => "Newcastle Scouts Explorer ID",
@@ -21,14 +27,14 @@ $data = [
         "headerFields" => [
             [
                 "key" => "memberId",
-                "value" => "103565",
+                "value" => $memberInfo['id'],
                 "label" => "Member ID"
             ]
         ],
         "secondaryFields" => [
             [
                 "key" => "name",
-                "value" => "Jake Hall",
+                "value" => $memberInfo['name'],
                 "label" => "Name"
             ],
             [
@@ -58,17 +64,17 @@ $data = [
             [
                 "key" => "last_updated",
                 "label" => "LAST UPDATED",
-                "value" => "2023-12-30T23:10:00Z",
+                "value" => $memberInfo['passLastUpdated'],
                 "dateStyle" => "PKDateStyleFull"
             ]
         ]
     ],
     "barcodes" => [
         [
-            "message" => "103565",
+            "message" => $memberInfo['id'],
             "format" => "PKBarcodeFormatQR",
             "messageEncoding" => "iso-8859-1",
-            "altText" => "Member ID 103565"
+            "altText" => "Member ID " . $memberInfo['id']
         ]
     ]
 ];
